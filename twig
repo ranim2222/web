@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+       
+    </head>
+    <body>
+        <table border >
+            <tr>
+            
+                <th>id</th>
+                <th>picture</th>
+                <th>username</th>
+                <th>email</th>
+                <th>nb_books</th>
+            </tr>
+            {% for a in authors %}
+             <tr>
+                <td>{{a.id}}</td>
+                <td> <img src="{{a.picture}}"></td>
+                <td>{{a.username|upper}}</td>
+                <td>{{a.email}}</td>
+                <td>{{a.nb_books}}</td>
+            </tr>
+             {% endfor %}
+        </table>
+
+        <h1>{{authors|length}} </h1>
+        {% set nbTotal=0 %}
+        {% if authors is not defined or authors is empty %}
+    <p>No authors available.</p>
+{% else %}
+    <!-- Le reste de votre code pour afficher la liste des auteurs -->
+{% endif %}
+    {% set total_books = 0 %}
+{% for author in authors %}
+    {% set total_books = total_books + author.nb_books %}
+{% endfor %}
+<p>Total books: {{ total_books }}</p>
+
+
+
+
+    </body>
+</html>
